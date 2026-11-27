@@ -52,7 +52,7 @@ env:
 
 jobs:
   preflight:
-    if: github.repository == 'robolutionacademy-pixel/rustdesk' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'robodesk/phase-06-branding'
+    if: github.repository == 'robolutionacademy-pixel/rustdesk' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'robodesk/v0.1.0-rc1'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
@@ -321,7 +321,7 @@ jobs:
       - name: Upload unsigned
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: RoboDesk-lab-Windows-${{ matrix.job.arch }}
+          name: RoboDesk-0.1.0-rc1-Windows-${{ matrix.job.arch }}
           path: rustdesk
 
   build-rustdesk-android:
@@ -577,10 +577,21 @@ jobs:
           popd
           mkdir -p signed-apk; pushd signed-apk
           mv ../RoboDesk-${{ matrix.job.arch }}${{ matrix.job.suffix }}.apk .
+      - name: Verify APK package identity
+        shell: bash
+        run: |
+          AAPT="$(find "${ANDROID_HOME}/build-tools" -name aapt -type f | sort -V | tail -1)"
+          test -x "$AAPT"
+          APK="$(find signed-apk -maxdepth 1 -name '*.apk' -type f | head -1)"
+          test -f "$APK"
+          "$AAPT" dump badging "$APK" > apk-badging.txt
+          grep -F "package: name='com.robolution.robodesk'" apk-badging.txt
+          grep -F "application-label:'RoboDesk'" apk-badging.txt
+
       - name: Upload debug-signed lab APK
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
-          name: RoboDesk-lab-Android-${{ matrix.job.arch }}
+          name: RoboDesk-0.1.0-rc1-Android-${{ matrix.job.arch }}
           path: signed-apk/*.apk
           if-no-files-found: error
           retention-days: 7

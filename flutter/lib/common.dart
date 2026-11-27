@@ -3794,9 +3794,9 @@ Widget loadPowered(BuildContext context) {
   ).marginOnly(top: 6);
 }
 
-const _kDefaultLogoAsset = 'assets/logo.png';
-const _kLightLogoAsset = 'assets/logo_light.png';
-const _kDarkLogoAsset = 'assets/logo_dark.png';
+const _kDefaultLogoAsset = 'assets/robodesk_emblem.png';
+const _kLightLogoAsset = 'assets/robodesk_emblem.png';
+const _kDarkLogoAsset = 'assets/robodesk_emblem.png';
 
 List<String> _logoAssetCandidatesForBrightness(Brightness brightness) {
   return brightness == Brightness.dark
@@ -3862,7 +3862,7 @@ class _LogoState extends State<_Logo> {
 Widget loadLogo() => const _Logo();
 
 Widget loadIcon(double size) {
-  return Image.asset('assets/icon.png',
+  return Image.asset('assets/robodesk_emblem.png',
       width: size,
       height: size,
       errorBuilder: (ctx, error, stackTrace) => SvgPicture.asset(

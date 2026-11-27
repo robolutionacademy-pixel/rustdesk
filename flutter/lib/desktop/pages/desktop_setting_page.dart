@@ -2605,6 +2605,7 @@ class _AboutState extends State<_About> {
               Image.asset('assets/robodesk_emblem.png', width: 96, height: 96),
               const Text('Robolution Technologies Ltd.'),
               const Text('Science That Makes Sense.'),
+              const Text('RoboDesk 0.1.0 RC1 — evaluation build'),
               const Text('Based on RustDesk (AGPL-3.0).'),
               SelectionArea(
                   child: Text('${translate('Version')}: $version')

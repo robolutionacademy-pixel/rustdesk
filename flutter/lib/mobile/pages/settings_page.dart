@@ -1213,6 +1213,7 @@ void showAbout(OverlayDialogManager dialogManager) {
         const Text('RoboDesk'),
         const Text('Robolution Technologies Ltd.'),
         const Text('Science That Makes Sense.'),
+        const Text('RoboDesk 0.1.0 RC1 — evaluation build'),
         const Text('Based on RustDesk (AGPL-3.0).'),
         Text('Version: $version'),
         InkWell(

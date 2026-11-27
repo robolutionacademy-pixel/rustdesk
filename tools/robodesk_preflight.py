@@ -45,6 +45,11 @@ def main():
     rc = (WIN / "Runner.rc").read_text(encoding="utf-8-sig")
     for item in ('"RoboDesk Remote Desktop"', '"ProductName", "RoboDesk"', '"CompanyName", "Robolution Technologies Ltd."'):
         assert item in rc, item
+    gradle = (ANDROID.parent.parent / "build.gradle").read_text()
+    assert 'applicationId "com.robolution.robodesk"' in gradle
+    assert 'namespace "com.carriez.flutter_hbb"' in gradle
+    assert (ROOT / "flutter/assets/robodesk_emblem.png").read_bytes() == png
+    assert '"OriginalFilename", "RoboDesk.exe"' in rc
     assert (ROOT / "LICENCE").is_file(), "Preserve upstream license"
     print("Branding preflight passed. Not a build, security test or release.")
 
