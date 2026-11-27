@@ -6,7 +6,7 @@ This is a derivative of RustDesk. Preserve upstream copyright, AGPL-3.0 license 
 
 ## Scope
 - Android and Windows display branding. Preserve internal identifiers until migration and compatibility are reviewed.
-- Company logo assets, runtime name, signing identities and build outputs remain pending.
+- Android and Windows launcher assets and display labels are committed. Runtime identity, original artwork fidelity, signing identities and verified build outputs remain pending.
 - Planned self-hosted ID and relay service; no production endpoint or key has been provisioned. Do not use this branch for confidential sessions.
 - No server secrets, credentials, operational location data or private signing keys in this public repository.
 
@@ -16,3 +16,6 @@ This is a derivative of RustDesk. Preserve upstream copyright, AGPL-3.0 license 
 - Configure organization-controlled server, authenticate approved endpoints and verify encrypted connections and network egress.
 - Validate screen sharing and general authorized desktop support on non-operational test devices. Not a flight-control system.
 - Review upstream license obligations, dependencies and security before distribution.
+
+## Lab build (development only)
+The RoboDesk lab build workflow derives Android ARM64/ARMv7 and Windows x64 build jobs from upstream Flutter CI. It gates compilation on branding preflight, uploads short-lived test artifacts, and does not publish a release or pass production signing secrets. Android artifacts use debug signing; Windows artifacts are unsigned application folders, not final installers. Internal filenames and package identifiers may still say RustDesk. Do not deploy to operational equipment or enter confidential information.
