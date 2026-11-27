@@ -28,7 +28,7 @@
 
     <application
         android:name=".MainApplication"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/robodesk_launcher"
         android:label="RoboDesk"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true">
