@@ -1,0 +1,21 @@
+name: RoboDesk branding preflight
+
+on:
+  push:
+    branches: ["robodesk/phase-02-branding"]
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  branding-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          persist-credentials: false
+      - name: Verify branding source files and launcher resources
+        run: python3 tools/robodesk_preflight.py

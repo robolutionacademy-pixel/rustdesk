@@ -3,7 +3,8 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="?android:colorBackground" />
 
-    <!-- You can insert your own image assets here -->
+    <item android:width="128dp" android:height="128dp" android:gravity="center" android:drawable="@drawable/robodesk_launcher" />
+    <!-- Original upstream example retained below. -->
     <!-- <item>
         <bitmap
             android:gravity="center"

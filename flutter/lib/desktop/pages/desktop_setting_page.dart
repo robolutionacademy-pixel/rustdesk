@@ -2595,13 +2595,17 @@ class _AboutState extends State<_About> {
       final scrollController = ScrollController();
       return SingleChildScrollView(
         controller: scrollController,
-        child: _Card(title: translate('About RustDesk'), children: [
+        child: _Card(title: 'About RoboDesk', children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
                 height: 8.0,
               ),
+              Image.asset('assets/robodesk_emblem.png', width: 96, height: 96),
+              const Text('Robolution Technologies Ltd.'),
+              const Text('Science That Makes Sense.'),
+              const Text('Based on RustDesk (AGPL-3.0).'),
               SelectionArea(
                   child: Text('${translate('Version')}: $version')
                       .marginSymmetric(vertical: 4.0)),
