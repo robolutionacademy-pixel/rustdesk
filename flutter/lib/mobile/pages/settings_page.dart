@@ -1207,8 +1207,14 @@ void showThemeSettings(OverlayDialogManager dialogManager) async {
 void showAbout(OverlayDialogManager dialogManager) {
   dialogManager.show((setState, close, context) {
     return CustomAlertDialog(
-      title: Text(translate('About RustDesk')),
+      title: const Text('About RoboDesk'),
       content: Wrap(direction: Axis.vertical, spacing: 12, children: [
+        Image.asset('assets/robodesk_emblem.png', width: 96, height: 96),
+        const Text('RoboDesk'),
+        const Text('Robolution Technologies Ltd.'),
+        const Text('Science That Makes Sense.'),
+        const Text('RoboDesk 0.1.0 RC1 — evaluation build'),
+        const Text('Based on RustDesk (AGPL-3.0).'),
         Text('Version: $version'),
         InkWell(
             onTap: () async {
