@@ -30,7 +30,7 @@
         android:name=".MainApplication"
         android:icon="@drawable/robodesk_launcher"
         android:label="RoboDesk"
-        android:roundIcon="@mipmap/ic_launcher"
+        android:roundIcon="@drawable/robodesk_launcher"
         android:supportsRtl="true">
 
         <receiver

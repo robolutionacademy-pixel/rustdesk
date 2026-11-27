@@ -33,6 +33,7 @@ def main():
     assert app is not None
     assert app.attrib[NS+"label"] == "RoboDesk"
     assert app.attrib[NS+"icon"] == "@drawable/robodesk_launcher"
+    assert app.attrib[NS+"roundIcon"] == "@drawable/robodesk_launcher"
     assert any(s.attrib.get(NS+"label") == "RoboDesk Input" for s in app.findall("service"))
     png = (ANDROID / "res/drawable-nodpi/robodesk_launcher.png").read_bytes()
     check_png(png)
