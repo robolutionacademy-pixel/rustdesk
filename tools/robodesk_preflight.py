@@ -44,7 +44,7 @@ def main():
     rc = (WIN / "Runner.rc").read_text(encoding="utf-8-sig")
     for item in ('"RoboDesk Remote Desktop"', '"ProductName", "RoboDesk"', '"CompanyName", "Robolution Technologies Ltd."'):
         assert item in rc, item
-    assert (ROOT / "LICENSE").is_file(), "Preserve upstream license"
+    assert (ROOT / "LICENCE").is_file(), "Preserve upstream license"
     print("Branding preflight passed. Not a build, security test or release.")
 
 if __name__ == "__main__":
