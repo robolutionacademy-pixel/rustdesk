@@ -36,6 +36,19 @@ def main():
     assert any(s.attrib.get(NS+"label") == "RoboDesk Input" for s in app.findall("service"))
     png = (ANDROID / "res/drawable-nodpi/robodesk_launcher.png").read_bytes()
     check_png(png)
+    assert app.attrib[NS+"roundIcon"] == "@drawable/robodesk_launcher"
+    service = next(s for s in app.findall("service") if s.attrib.get(NS+"label") == "RoboDesk Input")
+    assert service.attrib[NS+"icon"] == "@drawable/robodesk_launcher"
+    strings = (ANDROID / "res/values/strings.xml").read_text(encoding="utf-8")
+    assert "RustDesk" not in strings and "RoboDesk" in strings
+    for density in ("mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi"):
+        for name in ("ic_launcher", "ic_launcher_round", "ic_launcher_foreground"):
+            assert (ANDROID / f"res/mipmap-{density}/{name}.png").read_bytes() == png
+    for name in ("ic_launcher", "ic_launcher_round"):
+        icon = ET.parse(ANDROID / f"res/mipmap-anydpi-v26/{name}.xml").getroot()
+        assert icon.find("foreground").attrib[NS+"drawable"] == "@drawable/robodesk_adaptive_foreground"
+    for path in ("mobile/pages/file_manager_page.dart", "mobile/widgets/android_file_transfer_setup.dart"):
+        assert "replaceAll('RustDesk', 'RoboDesk')" in (ROOT / "flutter/lib" / path).read_text(encoding="utf-8")
     ico = (WIN / "resources/app_icon.ico").read_bytes()
     assert struct.unpack_from("<HHH", ico) == (0,1,1)
     assert ico[6:8] == bytes((128,128))

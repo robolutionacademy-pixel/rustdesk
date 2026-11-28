@@ -30,7 +30,7 @@
         android:name=".MainApplication"
         android:icon="@drawable/robodesk_launcher"
         android:label="RoboDesk"
-        android:roundIcon="@mipmap/ic_launcher"
+        android:roundIcon="@drawable/robodesk_launcher"
         android:supportsRtl="true">
 
         <receiver
@@ -50,6 +50,7 @@
             android:enabled="true"
             android:exported="false"
             android:label="RoboDesk Input"
+            android:icon="@drawable/robodesk_launcher"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
